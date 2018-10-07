@@ -2,23 +2,11 @@
   "name": "ilsp-service",
   "version": "0.5.0",
   "description": "ILSP Service",
-  "main": "app.js",
-  "scripts": {
-    "start": "node app.js"
-  },
+  "queue": "ilsp",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/circulocorp/ilsp-service.git"
   },
   "author": "@maubarrerag",
-  "license": "ISC",
-  "dependencies": {
-    "dateformat": "^3.0.3",
-    "request-promise": "4.2.2",
-    "request": "latest",
-    "body-parser": "latest",
-    "docker-secrets-nodejs": "^1.0.5",
-    "amqplib": "latest",
-    "sync-rest-client": "latest"
-  }
+  "license": "ISC"
 }
