@@ -1,6 +1,6 @@
 {
   "name": "ilsp-service",
-  "version": "0.5.0",
+  "version": "0.9.1",
   "description": "ILSP Service",
   "queue": "ilsp",
   "repository": {

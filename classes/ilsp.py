@@ -4,14 +4,12 @@ from datetime import datetime, timedelta
 
 class Ilsp(object):
 
-    def __init__(self, client_secret):
-        self._token = {}
+    def __init__(self, client_secret=""):
+        self._token = dict()
         self._secret = client_secret
-        self._urlsend = "https://www.ilspservices.com.mx/CustomerServices/api/SetLastEventMassive"
         self.set_token()
 
     def set_token(self):
-        #BrJFksd5psTT
         url = "https://www.ilspservices.com.mx/identityserver/connect/token/"
         data = {'grant_type': 'client_credentials', 'client_id': 'supplier.circulocorp',
                 'client_secret': self._secret, 'scope': 'customers.api'}
@@ -36,11 +34,13 @@ class Ilsp(object):
                 return True
 
     def send_events(self, events):
+        url = "https://www.ilspservices.com.mx/CustomerServices/api/SetLastEventMassive"
         if not self.check_token():
             self.set_token()
-        print(events)
-
-
-
-
-
+        auth = "Bearer " + self._token["access_token"]
+        headers = {"Authorization": auth}
+        res = requests.post(url, json=events, headers=headers)
+        if res.status_code == 200:
+            return res.json()
+        else:
+            return {"error": res.json()}

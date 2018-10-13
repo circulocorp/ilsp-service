@@ -1,0 +1,29 @@
+version: "3.1"
+
+services:
+  ilsp:
+    image: donovosoft/ilsp-service:0.9.1
+    environment:
+      - RABBITMQ_URL=rabbitmq
+      - API_URL=http://192.168.1.68:8080
+    secrets:
+      - rabbitmq_user
+      - rabbitmq_passw
+      - ilsp_secret
+    volumes:
+      - ./:/app/logs
+    deploy:
+      resources:
+        limits:
+          memory: 200M
+      restart_policy:
+        condition: on-failure
+    extra_hosts:
+       rabbitmq: 192.168.1.70
+secrets:
+  rabbitmq_user:
+    external: true
+  rabbitmq_passw:
+    external: true
+  ilsp_secret:
+    external: true
