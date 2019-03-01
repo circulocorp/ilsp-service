@@ -1,6 +1,6 @@
 pika
 datetime
 requests
-PydoNovosoft
+PydoNovosoft==1.1.6
 logging
 json-logging

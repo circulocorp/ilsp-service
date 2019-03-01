@@ -13,9 +13,7 @@ json_logging.ENABLE_JSON_LOGGING = True
 json_logging.init()
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
-logpath = os.path.join('logs', 'ilsp.log')
-logger.addHandler(logging.FileHandler(filename=logpath, mode='w'))
+logger.setLevel(logging.INFO)
 logger.addHandler(logging.StreamHandler(sys.stdout))
 url = os.environ["API_URL"]
 rabbitmq = os.environ["RABBITMQ_URL"]
